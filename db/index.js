@@ -1,4 +1,4 @@
-// ℹ️ Mongoose (ODM) handles the connection to MongoDB and provides schema-based modeling.
+// Mongoose (ODM) handles the connection to MongoDB and provides schema-based modeling.
 const mongoose = require("mongoose");
 
 async function connectDB() {
@@ -7,7 +7,7 @@ async function connectDB() {
     return;
   }
   
-  // ℹ️ Connects to MongoDB using the URI from environment variables.
+  // Connects to MongoDB using the URI from environment variables.
   try {
     const response = await mongoose.connect(process.env.MONGODB_URI);
     const dbName = response.connections[0].name;

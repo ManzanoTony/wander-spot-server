@@ -4,36 +4,42 @@ const placeSchema = new Schema(
   {
     name: {
       type: String,
-      required: [true, 'Name is required.'],
+      required: [true, 'Please give the place a name.'],
       trim: true,
-      minlength: [3, 'Name must have at least 3 characters.'],
-      maxlength: [60, 'Name can have max 60 characters.']
+      minlength: [3, 'The name needs at least 3 characters.'],
+      maxlength: [60, 'The name can have up to 60 characters.']
     },
     description: {
       type: String,
-      maxlength: [1000, 'Description can have max 1000 characters.']
+      maxlength: [1000, 'The description can have up to 1000 characters.']
     },
     latitude: {
       type: Number,
-      required: [true, 'Latitude is required.'],
-      min: [-90, 'Latitude must be between -90 and 90.'],
-      max: [90, 'Latitude must be between -90 and 90.']
+      required: [true, 'Please tap the map to choose where the place is.'],
+      min: [-90, 'This location is not valid, please tap the map again.'],
+      max: [90, 'This location is not valid, please tap the map again.']
     },
     longitude: {
       type: Number,
-      required: [true, 'Longitude is required.'],
-      min: [-180, 'Longitude must be between -180 and 180.'],
-      max: [180, 'Longitude must be between -180 and 180.']
+      required: [true, 'Please tap the map to choose where the place is.'],
+      min: [-180, 'This location is not valid, please tap the map again.'],
+      max: [180, 'This location is not valid, please tap the map again.']
     },
     type: {
       type: String,
-      required: [true, 'Type is required.'],
-      enum: ["beach", "lake", "river", "campsite", "overnight parking", "nature spot", "viewpoint"]
+      required: [true, 'Please choose a type.'],
+      enum: {
+        values: ["beach", "lake", "river", "campsite", "overnight parking", "nature spot", "viewpoint"],
+        message: 'Please choose a type from the list.'
+      }
     },
     features: [
       {
         type: String,
-        enum: ["dog friendly", "nudist", "overnight allowed", "drinking water", "toilets", "showers", "shade", "free", "electricity", "grey water dump", "black water dump", "good phone signal", "wifi", "supermarket nearby"]
+        enum: {
+          values: ["dog friendly", "nudist", "overnight allowed", "drinking water", "toilets", "showers", "shade", "free", "electricity", "grey water dump", "black water dump", "good phone signal", "wifi", "supermarket nearby"],
+          message: 'Please choose features from the list.'
+        }
       }
     ],
     visited: {
